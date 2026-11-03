@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#eaf3f6">
+<meta name="description" content="Почтовый переполох (Postal Commotion) — головоломка о сортировке писем от LIK Studio. Описание, поддержка и политика конфиденциальности.">
+<title>Почтовый переполох | Postal Commotion — LIK Studio</title>
+<style>
+:root{color-scheme:light;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:#173447;background:#f6f8f7}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}a{color:inherit}a:focus-visible{outline:3px solid #356fbd;outline-offset:4px;border-radius:4px}
+.shell{max-width:1120px;margin:auto;padding:0 25px}.header{background:#fff;border-bottom:1px solid #e4ebea}
+.nav{min-height:80px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:13px;padding-bottom:13px}
+.logo{text-decoration:none;display:flex;align-items:center;gap:12px;font-weight:800;font-size:20px;letter-spacing:-.5px}
+.logo-mark{display:grid;place-items:center;width:42px;height:42px;background:#123a54;color:#fff;border-radius:14px;font-size:15px;letter-spacing:0}
+.links{display:flex;gap:24px;flex-wrap:wrap;font-size:14px;color:#466071}.links a{text-decoration:none}.links a:hover{text-decoration:underline}
+.hero{padding:54px 0 48px;background:linear-gradient(155deg,#ecf5f5 0%,#f4f6ee 70%,#f6f8f7 100%)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:55px;align-items:center}
+.eyebrow{color:#32758d;font-weight:750;letter-spacing:.13em;font-size:12px;text-transform:uppercase}
+h1{font-size:clamp(38px,5.2vw,66px);letter-spacing:-.065em;line-height:1.08;margin:17px 0 24px;color:#103b50}
+h1 span{display:block;font-size:.32em;font-weight:650;letter-spacing:0;color:#53788a;margin-top:15px}
+.lead{font-size:18px;max-width:550px;line-height:1.7;color:#48616d;margin:0 0 28px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.btn{border:1px solid #cddfdc;padding:14px 20px;border-radius:12px;text-decoration:none;font-weight:750;font-size:14px;background:#fff;display:inline-flex;align-items:center;justify-content:center}
+.btn.primary{background:#174c66;color:white;border-color:#174c66}.btn:hover{filter:brightness(.96)}
+.game-scene{position:relative;max-width:395px;margin:auto;width:100%;aspect-ratio: .82;background:#c1e6e3;border:9px solid #fff;box-shadow:0 22px 45px #234d5c22;border-radius:33px;overflow:hidden}
+.sky{height:34%;background:linear-gradient(#bde3e8,#e8f7e9);position:relative}
+.sun{position:absolute;right:45px;top:22px;width:48px;height:48px;border-radius:50%;background:#fae4a4}
+.post{position:absolute;left:19%;bottom:0;width:63%;height:85%;background:#fff8e6;border:4px solid #669ca4;border-bottom:0;border-radius:12px 12px 0 0}
+.roof{position:absolute;top:-19px;left:-11%;width:122%;height:22px;background:#b56f68;border-radius:8px}
+.post:before{content:"POST";position:absolute;top:20px;left:25%;width:50%;text-align:center;border-radius:4px;background:#d9e9e2;padding:6px 0;color:#456c78;font-size:13px;font-weight:900;letter-spacing:.18em}
+.door{position:absolute;bottom:0;left:34%;width:32%;height:52%;background:#82afaf;border:4px solid #5b9799;border-bottom:0;border-radius:9px 9px 0 0}
+.board{height:66%;padding:22px 19px;background:linear-gradient(#e8dcbf,#e2cfad);position:relative}
+.board-title{font-size:12px;letter-spacing:.15em;color:#6d6653;font-weight:900;text-align:center;margin-bottom:22px}
+.piles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;height:190px;align-items:end}
+.pile{border-radius:11px;background:#c5b593;padding:9px 8px;display:flex;flex-direction:column-reverse;gap:7px;min-height:178px;justify-content:flex-start;box-shadow:inset 0 4px 8px #6c543c20}
+.mail{height:45px;width:100%;border-radius:6px;background:#fffdf3;position:relative;border:2px solid #c4b2a1;box-shadow:0 2px 2px #836e5633}
+.mail:before,.mail:after{content:"";position:absolute;top:6px;width:1.5px;height:25px;background:#b9a5a1;transform-origin:top}
+.mail:before{left:7px;transform:rotate(-57deg)}.mail:after{right:7px;transform:rotate(57deg)}
+.mail.blue{background:#dceaf5;border-color:#81b6d5}.mail.pink{background:#f4d9d8;border-color:#d49c9e}.mail.gold{background:#fff0c8;border-color:#dcc284}
+.scene-caption{position:absolute;bottom:10px;left:0;right:0;text-align:center;color:#635a49;font-size:11px}
+.section{padding:68px 0}.section h2{font-size:clamp(27px,3.5vw,39px);letter-spacing:-.04em;color:#153c50;margin:0 0 12px}
+.section-intro{color:#69808a;line-height:1.7;margin:0 0 27px;max-width:730px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.feature{background:#fff;border:1px solid #e3eae9;padding:26px;border-radius:20px;min-height:195px;box-shadow:0 8px 26px #174c6609}
+.feature .num{width:39px;height:39px;background:#e6f4f3;color:#1e6b7d;display:grid;place-items:center;border-radius:12px;font-weight:800}
+.feature h3{font-size:18px;margin:19px 0 8px}.feature p{font-size:14px;line-height:1.7;color:#637782;margin:0}
+.alt{background:#edf3f3}.help{display:grid;grid-template-columns:1fr 1fr;gap:24px}.help-card{background:white;border-radius:22px;border:1px solid #dee9e7;padding:29px}
+.help-card h3{margin:0 0 12px;font-size:21px}.help-card p{line-height:1.75;color:#536b77;margin:0 0 17px}.help-card a{color:#216b82;font-weight:750;overflow-wrap:anywhere}
+.english{border-top:1px solid #e1eaea;padding-top:40px;margin-top:42px}.english h2{font-size:26px}.english p{max-width:800px;line-height:1.75;color:#5c7280}
+.footer{background:#163e53;color:#c7dbe4;padding:29px 0;font-size:13px}.footer .shell{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer a{color:#fff}
+@media(max-width:780px){.hero-grid{grid-template-columns:1fr;gap:32px}.hero{padding:35px 0}.game-scene{max-width:320px}.cards{grid-template-columns:1fr}.help{grid-template-columns:1fr}.section{padding:45px 0}.lead{font-size:16px}.links{gap:12px}}
+</style>
+</head>
+<body>
+<header class="header"><nav class="shell nav" aria-label="Навигация">
+<a class="logo" href="../"><span class="logo-mark">LIK</span> LIK Studio</a>
+<div class="links"><a href="#about">Об игре</a><a href="#support">Поддержка</a><a href="index.html">Privacy Policy</a><a href="#english">English</a></div>
+</nav></header>
+<main>
+<section class="hero">
+<div class="shell hero-grid">
+<div>
+<div class="eyebrow">Puzzle game · LIK Studio</div>
+<h1>Почтовый<br>переполох<span>Postal Commotion</span></h1>
+<p class="lead">Разберите почтовый переполох! Сортируйте разноцветные конверты, продумывайте последовательность ходов и проходите уровни, постепенно повышая сложность.</p>
+<div class="cta-row"><a class="btn primary" href="#about">Узнать об игре</a><a class="btn" href="index.html">Политика конфиденциальности</a></div>
+</div>
+<div class="game-scene" role="img" aria-label="Декоративная иллюстрация почты и стопок разноцветных конвертов — не скриншот игры">
+<div class="sky"><div class="sun"></div><div class="post"><div class="roof"></div><div class="door"></div></div></div>
+<div class="board"><div class="board-title">MAIL SORTING</div>
+<div class="piles"><div class="pile"><div class="mail blue"></div><div class="mail pink"></div><div class="mail blue"></div></div><div class="pile"><div class="mail gold"></div><div class="mail gold"></div><div class="mail pink"></div></div><div class="pile"><div class="mail pink"></div><div class="mail blue"></div><div class="mail gold"></div></div></div>
+<div class="scene-caption">Иллюстрация механики · Illustration</div></div>
+</div>
+</div>
+</section>
+<section class="section" id="about"><div class="shell">
+<div class="eyebrow">Игровой процесс</div><h2>Сортируйте. Планируйте. Продвигайтесь дальше.</h2>
+<p class="section-intro">«Почтовый переполох» — логическая головоломка о распределении писем по стопкам. Простые правила сочетаются с задачами, где важно учитывать каждый ход.</p>
+<div class="cards">
+<article class="feature"><div class="num">01</div><h3>Сортировка конвертов</h3><p>Перемещайте письма между стопками и собирайте конверты по цветам.</p></article>
+<article class="feature"><div class="num">02</div><h3>Новые уровни</h3><p>Открывайте следующие задания по мере прохождения предыдущих. Сложность увеличивается постепенно.</p></article>
+<article class="feature"><div class="num">03</div><h3>Продуманные ходы</h3><p>Используйте доступное пространство и игровые подсказки, когда решение становится сложнее.</p></article>
+</div>
+</div></section>
+<section class="section alt" id="support"><div class="shell">
+<div class="eyebrow">Информация и помощь</div><h2>Поддержка и конфиденциальность</h2>
+<p class="section-intro">Разработчик и издатель: LIK Studio. Для вопросов по игре и информации об обработке данных используйте следующие контакты.</p>
+<div class="help">
+<div class="help-card"><h3>Связаться с разработчиком</h3><p>Вопросы, замечания или сообщения о проблемах в игре можно направить по электронной почте.</p><a href="mailto:n.choi.sw@gmail.com?subject=Postal%20Commotion%20Support">n.choi.sw@gmail.com</a></div>
+<div class="help-card"><h3>Политика конфиденциальности</h3><p>Информация о локальном хранении игрового прогресса, рекламе и обработке данных.</p><a href="index.html">Открыть Privacy Policy</a></div>
+</div>
+<div class="english" id="english" lang="en"><h2>About Postal Commotion</h2>
+<p>Postal Commotion is a letter-sorting puzzle game by LIK Studio. Organize colorful envelopes into stacks, plan each move and work through increasingly challenging levels. Learn the mechanics at your own pace.</p>
+<p><strong>Support:</strong> <a href="mailto:n.choi.sw@gmail.com?subject=Postal%20Commotion%20Support">n.choi.sw@gmail.com</a> &nbsp;|&nbsp; <strong>Privacy Policy:</strong> <a href="index.html">Read in English or Russian</a>.</p></div>
+</div></section>
+</main>
+<footer class="footer"><div class="shell"><div>© 2026 LIK Studio. Postal Commotion.</div><div><a href="../">All LIK Studio games</a> · <a href="index.html">Privacy</a> · <a href="mailto:n.choi.sw@gmail.com">Contact</a></div></div></footer>
+</body>
+</html>
